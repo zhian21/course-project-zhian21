@@ -1,0 +1,70 @@
+Research Design
+The research design of this project is structured to explore the dynamics of parenting norms among U.S. college students, focusing on the perception and misperception of these norms. The first component involves measuring existing parenting norms to establish a baseline, utilizing parents' time investment in childcare as a proxy for the intensity of parenting practices. This phase of the research design employs a dual-method approach for data collection. Initially, it leverages the American Time Use Survey between 2003 and 2022 to quantify the actual time investment by parents in childcare activities, providing a "true" baseline of parenting norms. For example, the participants are asked, “How long did you spend on activities related to household child's education”, during a specified 24-hour period. Subsequently, the project modifies the survey questionnaire to gather data from a diverse sample of 1000 to 1500 U.S. college students, aiming to capture a wide array of demographic and socioeconomic variables. This innovative approach allows for the comparison of actual parenting norms with the perceived norms within the student community, thereby setting the groundwork for identifying potential misperceptions among this demographic group.
+The second component of the research design focuses on measuring the perception of parenting norms among the same cohort of students. Specifically, we engage students in estimating their peers' beliefs about parenting norms, asking them to predict the level of agreement with certain statements within a hypothetical group of ten students. For example, we will ask “If we were to speak to 10 students, how many of them do you think would agree with each of these statements?” This technique, designed to assess whether students are likely to overestimate or underestimate these norms, serves as a pivotal tool for contrasting perceived norms against a "true" baseline derived from parental data. Such an approach not only facilitates the identification of potential misperceptions within the student population but also enriches our understanding of the discrepancies between perceived and actual parenting norms. This methodology, mirroring strategies employed in prior studies such as those examining women's empowerment in Saudi Arabia, underscores the utility of peer estimation in uncovering the nuances of social norm perceptions within specific demographic groups (Bursztyn et al., 2020). In short, the research begins with the American Time Use Survey data to establish a baseline of actual parenting norms based on parents' time investment in childcare. Following this, a modified survey will be administered to the U.S. college students to capture their demographic and socioeconomic variables and their estimation of parenting norms (self-estimation), facilitating a comparison between actual and perceived norms. Students will also be asked to estimate their peers' beliefs about parenting norms to identify potential misperceptions (peer-estimation). This methodology is informed by previous studies on social norm perceptions.
+
+Table 1.  Research Design Phases and Objectives
+Phase	Description	Methods	Objectives
+Phase 1	Measuring Existing Parenting Norms	1. Utilize the American Time Use Survey (2003-2022).
+
+	1. Establish a "true" baseline of parenting norms based on parents' time investment in childcare.
+
+
+		2. Modify the survey questionnaire to gather data from 1000-1500 U.S. college students.	2. Capture a wide array of demographic and socioeconomic variables and estimation of parenting norms to compare actual vs. perceived norms.
+Phase 2	Measuring Perception of Parenting Norms Among Students	Survey students to estimate peers' beliefs about parenting norms. Ask students to predict agreement with statements within a hypothetical group of ten peers.	Assess whether students overestimate or underestimate parenting norms (peer-estimation).
+
+Phase 3	Simulating the Spread of Parenting Norms Using ABM	1. Develop an Agent-Based Model (ABM) using the ODD+D protocol.	1. Simulate the spread of parenting norms among college students.
+		2. Incorporate socioeconomic and demographic variables from the student survey.	2. Understand the dissemination of parenting norms and identify factors influencing these norms.
+
+Lastly, the project employs an agent-based model (ABM) to simulate the spread of parenting norms across the student population, taking into account the socioeconomic and demographic variables collected from the student survey. To comprehensively detail the use of Agent-Based Modeling (ABM) in simulating the dissemination of parenting norms among college students, we adopt the Overview, Design concepts, and Details plus Decision (ODD+D) protocol. 
+
+Overview
+The ABM simulates the spread of parenting norms within a college student population, incorporating socio-economic and demographic data derived from student surveys. The primary focus is on norms related to time investment in parenting, exploring how these norms are communicated and adopted among individuals through different learning strategies.
+
+Agents and their attributes and actions
+The model only contains a single type of agent.
+Agent: Parent
+•	Description:
+o	The agent represents a parent or a student in the model. The parent has a certain education level and is placed in a network, adopts a learning strategy, and invests time in their child. The parent can switch strategies based on certain thresholds.
+•	Attributes:
+o	Education Level (High, Medium, Low)
+o	Initial Time Investment 
+o	Strategy (Individual Learning, Social Learning)
+o	Threshold 
+o	Child Outcome Score 
+Process Overview
+1.	Initial Setup:
+o	Agent Initialization: Each agent is assigned an education and income level (High, Medium, Low), a learning strategy (Individual Learning, Social Learning), and an initial time investment. Agents are also placed within a social network graph based on their education level.
+o	Network Creation: Separate network graphs are created for each education level, and agents are placed on nodes within these graphs. The networks are then combined into a unified graph (i.e., there are connections between agents from different education levels).
+o	Parameter Assignment: Each agent receives other parameters, such as thresholds for switching strategies and average node degree. These parameters vary based on the agent's education level.
+o	Optimal Time Investment: The model defines an optimal time investment value that maximizes child outcome scores.
+2.	Observation:
+o	Each agent observes the strategies and time investments of its peers within its network. They gather information about the time investments and corresponding child outcome scores of their neighbors.
+3.	Strategy Update:
+o	Individual Learning Agents: Agents using individual learning maintain their current time investment, as they rely on their own experience rather than peer influence.
+o	Social Learning Agents: Agents using social learning may adopt one of the following strategies:
+	Copying the Highest-Scoring Neighbor: The agent identifies the neighbor with the highest child outcome score and adopts their time investment.
+	Copying the Most Frequently Observed Strategy: The agent adopts the most common time investment observed among its neighbors.
+	Copying Randomly: The agent randomly selects a neighbor and adopts their time investment.
+o	After updating their time investment, agents recalculate their child outcome score based on how close their time investment is to the optimal value set in the model.
+4.	Time Investment Adjustment:
+o	Feedback Loop:
+	Assessment: Each agent calculates their child's outcome score based on their current time investment. This score is compared to the optimal score to determine the effectiveness of their investment.
+	Positive Feedback: If the child outcome score is high (close to the optimal value), the agent receives positive reinforcement. The agent is likely to maintain their current time investment strategy.
+	Negative Feedback: If the child outcome score is low (far from the optimal value), the agent receives negative feedback. This prompts the agent to reassess and potentially adjust their time investment strategy.
+o	Strategy Switching:
+	Discrepancy Threshold: If the agent's time investment significantly deviates from the optimal value, they may consider switching their learning strategy. Each education level (High, Medium, Low) has a specific threshold for what constitutes a significant discrepancy.
+	Switch Probability: The likelihood of switching strategies when the discrepancy threshold is exceeded. This probability varies by education level:
+	High-Education Agents: Low switch probability, but sensitive to small discrepancies.
+	Medium-Education Agents: Moderate switch probability and thresholds.
+	Low-Education Agents: Higher switch probability, triggered by larger discrepancies.
+	Execution: Agents exceeding the discrepancy threshold and within the switch probability will change their strategy to either individual learning or one of the social learning strategies. The new strategy is chosen based on predefined ratios specific to their education level.
+5.	Stop Conditions:
+o	The model will stop when all agents reach the maximum of child outcome scores (i.e., 20 points).
+
+ 
+Figure 1. Flowchart of the Parental Learning Agent-Based Model (ABM) Process
+
+Details
+All of the parameters in the model are described in Table 2 below. The initial values of some parameters are empirically estimated, whereas others are decided based on informed guessing. For instance, the initial time investment and the education level ratios for parents from each different education level are derived from the data of the American Time Use Survey (ATUS) spanning 2003 to 2022. This setup aims to reflect realistic behaviors and social patterns, providing a robust foundation for simulating the dynamics of parental learning strategies. 
+ 
+Table 2. Parameters of the Parental Learning Model. This table outlines the various parameters used in the Parental Learning Model, including agent-specific attributes, model-wide settings, and network configuration parameters. 
