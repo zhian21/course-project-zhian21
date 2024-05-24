@@ -1,11 +1,13 @@
 # Final Project
 
 ### Summary
-This project employs Agent-Based Modeling (ABM) to investigate the influence of parenting norms and misperceptions among college students, aiming to enhance interventions based on the social norms approach. By integrating surveys, social media analysis, and simulations, the research seeks to understand how misperceptions of parenting norms affect student behaviors and to identify strategies for correcting these misperceptions. The multifaceted methodology draws on diverse data sources, including population and economic statistics, the America Time Use Survey, and social media content, to model the emergence and evolution of parenting norms within college environments. The project's use of ABM allows for the exploration of complex social interactions and the impact of societal forces on individual decision-making processes. Despite challenges such as the simplification of real-world complexities and potential biases from reliance on survey data and social media scraping, the research holds promise for offering meaningful insights into supporting positive parenting behaviors among college-aged populations. Through a comprehensive review of literature on social norms, cultural evolution, and the role of misperceptions, the project addresses a significant gap in existing research, with the potential to contribute valuable knowledge on the dynamics of social norms and the mechanisms through which interventions can effectively align behaviors with actual norms.
+This research project investigates the dynamics of misperceptions in parenting norms among U.S. college students through the use of agent-based modeling. Addressing key concerns such as the complexity of design concepts, causal claims, and the definition of social norms, the study aims to elucidate how social learning strategies, demographic variables, and group sizes contribute to these misperceptions. Hypotheses include an increasing trend in parental investment, potential overestimation of such investment by students, and the influence of social learning strategies and group sizes on these misperceptions. Despite limitations in capturing real-world complexities, the project employs a rigorous methodological approach, combining historical data analysis, surveys, and simulation modeling. Preliminary results indicate an upward trend in parental time investment in childcare and reveal the impact of different learning strategies on the dissemination of parenting norms. This research contributes to a deeper understanding of the perceptions and misperceptions of parenting norms among college students, offering insights into the broader implications of social norm dynamics.
+
 
 ### Research Questions  
-* How can we develop and validate a methodology for identifying and measuring misperceptions within a defined cultural group, considering the complex interplay between personal attitudes and social expectations?
-* What are the mechanisms through which misperceptions influence individual behaviors, specifically within the framework of interventions aimed at modifying social norms? 
+* How do social learning strategies, demographic variables, and social network contribute to the misperceptions of parenting norms among college students?
+* Is there an increasing trend in parental investment in childcare, and do students overestimate this investment?
+* How do different social learning strategies and group sizes influence the dissemination and adoption of parenting norms? 
 
 ### Data Sources
 * **Data Source 1 - American Time Use Survey (ATUS)**  
@@ -21,20 +23,21 @@ The ACS data contains socioeconomic and demographic data from respondents across
 ### Github Navigation Steps  
 * First clone the repository at your local machine.
 * The structure of the repository is as follows:
-   * Data folder contains all the CSV files
+   * Data folder contains all the CSV files for the data used 
    * Notebooks folder contains all the iPython files of the codes
       * Census_ACS.ipynb file extracts the medium income level of U.S. states    
       * ATUS.ipynb file contains the preprocessing, exploratory data analysis, visualization, and OLS model results on the ATUS-related data file.
-      * pd_grid subfolder contains:
+      * ps subfolder contains:
         * model.py contains all the python script for the setup of the ABM model
         * server.py contains all the python script for seting up and running a server.
         * agent.py contains all the python script for the setup of the agent
       * requirement.text contains all the required libraries.
       * batchrun.py contains all the python script for the batch run
-      * analysis_updated.ipynb contains all codes for the results for the second batch run
-      * batch_run_results_2.csv contains the output for the second batch run
+      * analysis.ipynb contains all codes for the results for the batch run
+      * batch_run_results_.csv is not in the repo due to the size limitation
    * Proposal section folder contains all the write-up for the project
-   * Figures folder contains sample figures for the project     
+   * Figures folder contains sample figures for the project
+   * Final_proposal.pdf contains the final compiled pdf file for the write-up     
 
 
 * Presentation folder contains in-class presentation slides
@@ -55,6 +58,7 @@ The ACS data contains socioeconomic and demographic data from respondents across
 13. plotly == 5.9.0
 14. scipy == 1.9.0
 15. scikit-learn (sklearn) == 1.1.1
+16. mesa~=2.0
 
 
 ### Class setup
